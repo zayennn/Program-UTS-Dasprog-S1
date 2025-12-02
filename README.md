@@ -1,6 +1,4 @@
-# Tugas project uts mataa kuliah dasar pemrogramman
-
----
+# Tugas project uts mataa kuliah dasar pemrogramman : Penjualan Dan Pembelian
 
 ## Nama-nama anggota : 
 ```
