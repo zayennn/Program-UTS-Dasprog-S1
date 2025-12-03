@@ -35,28 +35,7 @@ while True :
 
             userAction = input("Pilih aksi (1/2/0): ")
 
-            if userAction == "1":
-                nama_add = input("Nama barang: ")
-                harga_add = int(input("Harga: "))
-                nama_produk.append(nama_add)
-                harga_produk.append(harga_add)
-                print("\nBarang berhasil ditambahkan!")
-
-            elif userAction == "2":
-                hapus = int(input("Nomor barang yang ingin dihapus: "))
-                if 1 <= hapus <= len(nama_produk):
-                    nama_produk.pop(hapus-1)
-                    harga_produk.pop(hapus-1)
-                    print("\nBarang berhasil dihapus!")
-                else:
-                    print("Nomor barang tidak valid!")
-
-            elif userAction == "0":
-                print("\nKembali ke menu utama...\n")
-                break
-
-            else:
-                print("Aksi tidak valid!")
+            
 
     
     elif userRole == 2:
