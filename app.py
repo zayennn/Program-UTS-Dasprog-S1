@@ -1,10 +1,10 @@
-productLists = [
+nama_produk = [
     "Bakso Mercon",
     "Roti Stuff",
     "Mocktail"
 ]
 
-productPrices = [
+harga_produk = [
     10000,
     5000,
     5000
@@ -12,7 +12,7 @@ productPrices = [
 
 while True :
     print("""
-======================= DAFTAR MENU 3 VOURS =======================
+======================= DAFTAR MENU 3VOURS =======================
 
 # PILIH ROLE KAMU :
 1) PENJUAL
@@ -22,16 +22,16 @@ while True :
     userRole = int(input('input role kamu (1/2) : '))
 
     if userRole == 1:
-        print("\n======================= List Menu Makanan 3 Vours =======================\n")
-        for i, (name, price) in enumerate(zip(productLists, productPrices), start=1):
-            print(f"{i}) {name} : Rp {price}")
-            
-        print(f"""
+        print("\n======================= List Menu Makanan 3Vours =======================\n")
+        for i, (nama, harga) in enumerate(zip(nama_produk, harga_produk), start=1):
+            print(f"{i}) {nama} : Rp {harga}")
+        
+        print("""
 =======================  Pilih Aksi Kamu =======================
-1) Tambah Product
-2) Hapus Barang
+1) Tambah Produk
+2) Hapus Produk
 3) Keluar
-""")    
+""")
         
         userAction = int(input('masukan aksi kamu (1/2/3) : '))
 
@@ -43,33 +43,40 @@ while True :
             break
         else :
             print('pilihan kamu tidak valid!')
-            
-    elif userRole == 2 :
-        print("\n======================= List Products 3Vours =======================\n")
-        for i, (name, price) in enumerate(zip(productLists, productPrices), start=1) :
-            print(f"{i}. {name} = {price}")
-            
-        jum_jenis = int(input('\nmasukan jumlah product yang ingin kamu beli : '))
-        
-        for i in range(1, jum_jenis + 1) :
-            print(f"\njenis ke-{i}")
-            
-            i_product = int(input('pilih jenis barang (1/2/3) : '))
-            jum_beli = int(input('jumlah product : '))
+    
+    elif userRole == 2:
+        print("\n======================= Daftar Produk 3Vours =======================\n")
+        for i, (nama, harga) in enumerate(zip(nama_produk, harga_produk), start=1):
+            print(f"{i}. {nama} = Rp {harga}")
 
-            if i_product == 1 :
-                total = productPrices[0] * jum_beli
-                print(f"{productLists[0]} x {jum_beli} = {total}\n")
-            elif i_product == 2 :
-                total = productPrices[1] * jum_beli
-                print(f"{productLists[1]} x {jum_beli} = {productPrices[1] * jum_beli}")
-            elif i_product == 3 :
-                total = productPrices[2] * jum_beli
-                print(f"{productLists[2]} x {jum_beli} = {productPrices[2] * jum_beli}")
-            else :
-                print("product tidak ditemukan")
-                
-            print(f"total yang harus dibayar : {total}")
+        jumlah_jenis = int(input('\nMasukkan jumlah jenis produk yang ingin dibeli : '))
 
-    else :
-        print('pilihan kamu tidak valid')
+        total_belanja = 0
+        pesanan = []
+
+        for i in range(1, jumlah_jenis + 1):
+            print(f"\nJenis ke-{i}")
+
+            pilih_produk = int(input('Pilih produk (1/2/3): '))
+            jumlah_beli = int(input('Jumlah produk : '))
+
+            if 1 <= pilih_produk <= len(nama_produk):
+                nama_produk = nama_produk[pilih_produk - 1]
+                harga_satuan = harga_produk[pilih_produk - 1]
+                total_harga = harga_satuan * jumlah_beli
+
+                pesanan.append([nama_produk, jumlah_beli, total_harga])
+                total_belanja += total_harga
+
+                print(f"{nama_produk} x {jumlah_beli} = Rp {total_harga}")
+            else:
+                print("Produk tidak ditemukan")
+
+        print("\n======================= TOTAL BELANJA =======================")
+        for item in pesanan:
+            print(f"{item[0]} x {item[1]} = Rp {item[2]}")
+
+        print(f"\nTOTAL YANG HARUS DIBAYAR = Rp {total_belanja}\n")
+
+    else:
+        print('Pilihan tidak valid!')
